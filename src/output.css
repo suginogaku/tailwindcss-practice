@@ -7,8 +7,18 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-red-400: oklch(70.4% 0.191 22.216);
+    --color-green-400: oklch(79.2% 0.209 151.711);
+    --color-blue-400: oklch(70.7% 0.165 254.624);
+    --color-blue-500: oklch(62.3% 0.214 259.815);
+    --color-blue-600: oklch(54.6% 0.245 262.881);
+    --color-pink-400: oklch(71.8% 0.202 349.761);
+    --color-white: #fff;
+    --spacing: 0.25rem;
     --text-3xl: 1.875rem;
     --text-3xl--line-height: calc(2.25 / 1.875);
+    --text-7xl: 4.5rem;
+    --text-7xl--line-height: 1;
     --font-weight-bold: 700;
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
@@ -160,34 +170,95 @@
   }
 }
 @layer utilities {
-  .table {
-    display: table;
+  .my-10 {
+    margin-block: calc(var(--spacing) * 10);
   }
-  .border-collapse {
-    border-collapse: collapse;
+  .ml-10 {
+    margin-left: calc(var(--spacing) * 10);
   }
-  .resize {
-    resize: both;
+  .rounded {
+    border-radius: 0.25rem;
   }
   .border {
     border-style: var(--tw-border-style);
     border-width: 1px;
   }
+  .border-blue-400 {
+    border-color: var(--color-blue-400);
+  }
+  .p-16 {
+    padding: calc(var(--spacing) * 16);
+  }
+  .px-4 {
+    padding-inline: calc(var(--spacing) * 4);
+  }
+  .py-2 {
+    padding-block: calc(var(--spacing) * 2);
+  }
   .text-3xl {
     font-size: var(--text-3xl);
     line-height: var(--tw-leading, var(--text-3xl--line-height));
+  }
+  .text-7xl {
+    font-size: var(--text-7xl);
+    line-height: var(--tw-leading, var(--text-7xl--line-height));
   }
   .font-bold {
     --tw-font-weight: var(--font-weight-bold);
     font-weight: var(--font-weight-bold);
   }
-  .underline {
-    text-decoration-line: underline;
+  .sm\:text-red-400 {
+    @media (width >= 40rem) {
+      color: var(--color-red-400);
+    }
   }
-  .outline {
-    outline-style: var(--tw-outline-style);
-    outline-width: 1px;
+  .md\:text-blue-400 {
+    @media (width >= 48rem) {
+      color: var(--color-blue-400);
+    }
   }
+  .lg\:text-7xl {
+    @media (width >= 64rem) {
+      font-size: var(--text-7xl);
+      line-height: var(--tw-leading, var(--text-7xl--line-height));
+    }
+  }
+  .lg\:text-pink-400 {
+    @media (width >= 64rem) {
+      color: var(--color-pink-400);
+    }
+  }
+  .xl\:text-green-400 {
+    @media (width >= 80rem) {
+      color: var(--color-green-400);
+    }
+  }
+}
+.easy-button {
+  padding: 8px 16px;
+  background-color: #467ef7;
+  color: white;
+  border-radius: 4px;
+  font: bold;
+  margin-left: 40px;
+}
+.easy-button:hover {
+  background-color: #386ad6;
+}
+.btn {
+  margin-left: calc(var(--spacing) * 10);
+  border-radius: 0.25rem;
+  padding-inline: calc(var(--spacing) * 4);
+  padding-block: calc(var(--spacing) * 2);
+  --tw-font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-bold);
+}
+.btn-blue {
+  background-color: var(--color-blue-500);
+  color: var(--color-white);
+}
+.btn-blue:hover {
+  background-color: var(--color-blue-600);
 }
 @property --tw-border-style {
   syntax: "*";
@@ -198,17 +269,11 @@
   syntax: "*";
   inherits: false;
 }
-@property --tw-outline-style {
-  syntax: "*";
-  inherits: false;
-  initial-value: solid;
-}
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
       --tw-border-style: solid;
       --tw-font-weight: initial;
-      --tw-outline-style: solid;
     }
   }
 }
